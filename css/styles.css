@@ -12,7 +12,7 @@
   .header {
     padding: 80px;
     text-align: center;
-    background: #1abc9c;
+    background: #cfad6e;
     color: white;
   }
   
@@ -24,7 +24,7 @@
   /* Style the top navigation bar */
   .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: #393024;
     position: fixed; /* Set the navbar to fixed position */
     width: 100%;
   }
