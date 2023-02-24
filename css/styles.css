@@ -12,8 +12,8 @@
   .header {
     padding: 80px;
     text-align: center;
-    background: #cfad6e;
-    color: white;
+    background: #a7987b;
+    color: rgb(0, 0, 0);
   }
   
   /* Increase the font size of the heading */
@@ -53,7 +53,7 @@
   
   /* Change color on active */
   .navbar a:active {
-    background-color: rgb(92, 138, 245);
+    background-color: rgb(109, 94, 61);
     color: black;
   }
   
