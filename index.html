@@ -6,9 +6,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
-
+    <script>  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+    
+    // Show filtered elements
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+    
+    // Hide elements that are not selected
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+    
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+    </script>
 </head>
 
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About me</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#contact">Contact</a>
+  <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i> -->
+  </a>
+</div>
+
+<h2 id="about">About me</h2>
+<p>Meet Basira Havoli, a passionate 20-year-old Industrial Engineering student at the University of Ghent. With a love for creativity and reading, Basira is a driven and curious individual who is always eager to learn and grow.</p>
+<p>As an Industrial Engineering student, Basira is committed to understanding the intricacies of the field and finding innovative solutions to complex problems. With a keen eye for detail and a passion for precision, Basira is always striving to improve their skills and knowledge.</p>
+<p>Outside of the classroom, Basira loves to explore their creative side. Whether it's painting, photography, or graphic design, Basira is always looking for new ways to express themselves and bring their ideas to life.</p>
+<p>And when they're not immersed in their studies or their creative pursuits, you'll likely find Basira with their nose buried in a book. From classic literature to modern bestsellers, Basira is an avid reader who is always seeking to broaden their horizons and expand their understanding of the world.
+</p>
+<h3>Curriculum vitae</h3>
+<p>Education</p>
+<ul>
+  <li>Campus Het Spoor, Mol: September 2014 - June 2021</li>
+  <li>Industrial Engineering Design, University of Ghent, Kortrijk: October 2021 - Current</li>
+  </ul>
+<p>Skills</p>
+<ul>
+  <li>Siemens NX</li>
+  <li>Affinity</li>
+  <li>Microsoft Word, Powerpoint, Excel</li>
+  </ul>
+<p>Languages</p>
+<ul>
+  <li>Dutch: fluent</li>
+  <li>English: fluent</li>
+  <li>French: intermediate</li>
+  <li>Albanian: intermediate</li>
+  </ul>
+<p>Hobbies and interests</p>
+<ul>
+  <li>Reading: An avid reader, with a passion for diverse genres and a love of learning through literature.</li>
+  <li>Creative Pursuits: Passionate about exploring different forms of creativity, including art, drawing, and assembling model kits. Constantly seeking new ways to express myself through artistic mediums.</li>
+  <li>Family Time: Values the importance of quality time with loved ones, prioritizing opportunities to connect and bond with family members outside of academic and professional responsibilities.</li>
+  </ul>
+<!-- <h2 id="portfolio">Portofolio</h2>
+
+<div class="container">
+  <img src="images/frontpage.png" alt="Frontpage" style="width:100%;">
+  <div class="text-block">
+    <h4>Nivalis</h4>
+    <p>Design assigment Bachelor 2 semester 1, 2023</p>
+  </div>
+</div>
+
+<div class="container">
+  <img src="images/cornel.jpeg" alt="Cornelbox" style="width:100%;">
+  <div class="text-block">
+    <h4>Cornelbox</h4>
+    <p>Assigment Bachelor 2 semester 1, 2023</p>
+  </div>
+</div> -->
+
+<h2 id="portfolio">Portfolio</h2>
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('nature')"> Fotography</button>
+  <button class="btn" onclick="filterSelection('cars')"> Design</button>
+  <button class="btn" onclick="filterSelection('people')"> Art</button>
+</div>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column fotography">
+    <div class="content">
+      <img src="images/wood.jpg" alt="" style="width:100%;">
+      <h4>Bathroom tray</h4>
+      <p>Assigment Bachelor 2 semester 1, 2023</p>
+    </div>
+  </div>
+  <div class="column fotography">
+    <div class="content">
+      <img src="images/light.jpg" alt="" style="width:100%;">
+      <h4>Lightpainting</h4>
+      <p>Assigment Bachelor 2 semester 1, 2023</p>
+    </div>
+  </div>
+  <!-- <div class="column fotography">
+    <div class="content">
+      <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
+      <h4>Forest</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div> -->
+
+  <div class="column design">
+    <div class="content">
+      <img src="images/frontpage.png" alt="Nivalis" style="width:100%;">
+      <h4>Nivalis</h4>
+      <p>For this assignment, we had to show a design
+        process through a visually appealing design
+        bundle.</p>
+      <p>Assigment Bachelor 2 semester 1, 2023</p>
+    </div>
+  </div>
+  <div class="column design">
+    <div class="content">
+      <img src="images/cornel.jpeg" alt="Cornelbox" style="width:100%;">
+      <h4>Cornelbox</h4>
+      <p>Assigment Bachelor 2 semester 1, 2023</p>
+    </div>
+  </div>
+  <!-- <div class="column cars">
+    <div class="content">
+      <img src="/w3images/cars3.jpg" alt="Car" style="width:100%">
+      <h4>Classic</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div> -->
+
+  <div class="column art">
+    <div class="content">
+      <img src="/w3images/people1.jpg" alt="People" style="width:100%">
+      <h4>Girl</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column people">
+    <div class="content">
+      <img src="/w3images/people2.jpg" alt="People" style="width:100%">
+      <h4>Man</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+  <div class="column people">
+    <div class="content">
+      <img src="/w3images/people3.jpg" alt="People" style="width:100%">
+      <h4>Woman</h4>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+<!-- END GRID -->
+</div>
+
+
+<h2 id="contact">Contact</h2>
+<p>If you have any questions or would like to get in touch with me, feel free to email me at basira.havoli@ugent.be. I'm always happy to hear from others who share similar interests or are looking to collaborate on a project. Don't hesitate to reach out and let me know how I can assist you. I'll do my best to respond as soon as possible. Thank you for your interest and I look forward to hearing from you soon!</p>
+
+
+<!-- Slideshow container -->
+<!-- <div class="slideshow-container">
+
+    <-- Full-width images with number and caption text -->
+    <!-- <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="img1.jpg" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="img2.jpg" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="img3.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+  
+    <-- Next and previous buttons -->
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br> -->
+  
+  <!-- The dots/circles -->
+  <!-- <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>  --> 
+
+
+
+
+
+
+<!-- 
 <body>
 
     <div class="navbar">
@@ -40,30 +271,40 @@
         </div>
         
         <div class="main">
-            <h2>Waterkoker</h2>
+            <h2>Kettle</h2>
             <h5>Design assigment Bachelor 1 semester 2, 2022</h5>
             <div class="fakeimg" style="height:200px;">Image</div>
-            <!-- <p>Some text..</p> -->
-            <p>For this assigment,  we were asked to design a kettle 
+            <p>Some text..</p> -->
+            <!-- <p>For this assigment,  we were asked to design a kettle 
                 for a specific target group.</p>
             <br>
             
             <h2>Nivalis</h2>
             <h5>Design assigment Bachelor 2 semester 1, 2023</h5>
-            <div class="fakeimg" style="height:200px;"><img alt="frontpage" src="images/frontpage.png"></div>
-            <!-- <p>Some text..</p> -->
-            <p>For this assignment, we had to show a design
+            <div ><img id="nivalis" alt="frontpage" src="images/frontpage.png"></div>
+            <p>Some text..</p> -->
+            <!-- <p>For this assignment, we had to show a design
                 process through a visually appealing design
                 bundle.</p>
         </div>
-    </div>
+    </div> -->
 
-    <div class="footer">
+    <!-- <div class="footer">
         <h2>basira.havoli@ugent.be</h2>
     </div>
 
-</body>
+</body>  -->
 
 <!-- to put code in comment use Shift + Alt + A -->
 
 </html>
+
+
+
+<!-- 
+to add: 
+- cornelbox
+- tekeningen
+- tekenacademie
+- fotografie
+-->
